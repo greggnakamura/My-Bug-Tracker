@@ -1,0 +1,88 @@
+﻿@model MyBugTracker.Bug
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@*@ViewBag.Title.*@</h1>
+                <h2>@*@ViewBag.Message*@</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+
+<div class="row placeholders">
+    <div class="jumbotron">
+        <div class="col-md-6">
+            <h2>Bugs</h2>
+            <p>@ViewBag.NumberOfBugsReported</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Resolved</h2>
+            <p>@ViewBag.NumberOfBugsResolved</p>
+        </div>
+    </div>
+</div>
+<h2 class="sub-header">
+    Bugs / Issues
+    <a href="#" ng-click="showForm = ! showForm">+Add</a>
+</h2>
+
+<div class="col-md-6" ng-show="showForm">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Issue, "Issue*", new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.Issue, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Issue)
+        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Status, "Status", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.CheckBoxFor(model => model.Status.Value, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Resolution, "Resolution", new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.Resolution, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Resolution)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comments, "Comments", new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextAreaFor(model => model.Comments, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Comments)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rating, "Rating", new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.Rating, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Rating)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tag, "Tag(s)", new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.Tag, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Tag)
+        </div>
+
+        <input type="submit" class="btn btn-info" value="Create" />
+        @*@Html.ActionLink("Submit", "Index", "Home", new { @class = "btn btn-primary btn-large" })*@
+        @Html.ActionLink("Cancel", "Index", "Home", new { @class = "btn btn-large" })
+    }
+</div>
+    @{Html.RenderAction("_Bugs");}

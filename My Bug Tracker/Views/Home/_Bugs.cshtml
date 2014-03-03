@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MyBugTracker.Bug>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Issue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tag)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+{
+    <tr class="bs-callout bs-callout-info">
+        <td>
+            @Html.DisplayFor(modelItem => item.Issue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tag)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.BugId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BugId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BugId })
+        </td>
+    </tr>
+}
+        </tbody>
+    </table>
+</div>

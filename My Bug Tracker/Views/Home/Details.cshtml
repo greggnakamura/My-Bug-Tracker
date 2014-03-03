@@ -1,0 +1,50 @@
+﻿@model MyBugTracker.Bug
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Bug</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Issue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Issue)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Fix)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fix)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Comments)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Comments)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Rating)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rating)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Tag)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Tag)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.BugId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

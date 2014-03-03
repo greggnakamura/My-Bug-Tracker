@@ -1,0 +1,5 @@
+﻿@model IEnumerable<MyBugTracker.Bug>
+
+@foreach (var item in Model) {
+    @Html.DisplayFor(modelItem => item.Tag)
+}
