@@ -31,8 +31,8 @@ namespace My_Bug_Tracker
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            //bundles.Add(new ScriptBundle("~/bundles/docs-image-placeholders").Include(
-            //            "~/Scripts/docs.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/d3").Include(
+                        "~/Scripts/d3.v3.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.min.js"));
