@@ -344,6 +344,12 @@ namespace MyBugTracker
 
 
 
+		[Column] public string Cause { get; set; }
+
+
+
+
+
 		[Column] public string Status { get; set; }
 
 
@@ -369,6 +375,18 @@ namespace MyBugTracker
 
 
 		[Column] public string Tag { get; set; }
+
+
+
+
+
+		[Column] public DateTime? DateCreated { get; set; }
+
+
+
+
+
+		[Column] public DateTime? LastModified { get; set; }
 
 
 
