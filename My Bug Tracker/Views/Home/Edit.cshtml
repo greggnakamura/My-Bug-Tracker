@@ -24,6 +24,14 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Cause)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Cause)
+            @Html.ValidationMessageFor(model => model.Cause)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Status)
         </div>
         <div class="editor-field">

@@ -16,13 +16,17 @@
 
 <div class="row placeholders">
     <div class="jumbotron">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h2>Bugs</h2>
             <p>@ViewBag.NumberOfBugsReported</p>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h2>Resolved</h2>
             <p>@ViewBag.NumberOfBugsResolved</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Success Rate</h2>
+            <p>@ViewBag.ResolutionPercentage</p>
         </div>
     </div>
 </div>
@@ -38,23 +42,30 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Issue, "Issue*", new { @class = "col-sm-2 control-label" })
+            @Html.LabelFor(model => model.Issue, "Issue", new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 @Html.TextBoxFor(model => model.Issue, new { @class = "form-control" })
             </div>
             @Html.ValidationMessageFor(model => model.Issue)
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cause, "Cause", new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.Cause, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Cause)
+        </div>
         @*<div class="form-group">
-                @Html.LabelFor(model => model.Status, "Status", new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.CheckBoxFor(model => model.Status.Value, new { @class = "form-control" })
-                </div>
-                @Html.ValidationMessageFor(model => model.Status)
-            </div>*@
+            @Html.LabelFor(model => model.Status, "Status", new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.CheckBoxFor(model => model.Status, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>*@
         <div class="form-group">
             @Html.LabelFor(model => model.Resolution, "Resolution", new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                @Html.TextBoxFor(model => model.Resolution, new { @class = "form-control" })
+                @Html.TextAreaFor(model => model.Resolution, new { @class = "form-control" })
             </div>
             @Html.ValidationMessageFor(model => model.Resolution)
         </div>
