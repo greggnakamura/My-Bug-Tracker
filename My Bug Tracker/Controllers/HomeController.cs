@@ -14,9 +14,15 @@ namespace My_Bug_Tracker.Controllers
         public ActionResult Index()
         {
             var db = getDBConnection();
-            ViewBag.NumberOfBugsReported = db.ExecuteScalar<long>("SELECT Count(*) FROM Bug");
 
-            ViewBag.NumberOfBugsResolved = db.ExecuteScalar<long>("SELECT Count(*) FROM Bug WHERE Status = 'Resolved'");
+            double bugsReported = db.ExecuteScalar<long>("SELECT Count(*) FROM Bug");
+            double bugsResolved = db.ExecuteScalar<long>("SELECT Count(*) FROM Bug WHERE Status = 'Resolved'");
+
+            ViewBag.NumberOfBugsReported = bugsReported;
+            ViewBag.NumberOfBugsResolved = bugsResolved;
+
+            double calculatePercentage = bugsResolved / bugsReported;
+            ViewBag.ResolutionPercentage = String.Format("{0:p0}", calculatePercentage);
 
             return View();
         }
@@ -36,6 +42,7 @@ namespace My_Bug_Tracker.Controllers
 
                 // Set data
                 newBug.Issue = bugModel.Issue;
+                newBug.Cause = bugModel.Cause;
                 newBug.Resolution = bugModel.Resolution;
                 newBug.Comments = bugModel.Comments;
                 newBug.Rating = bugModel.Rating;
@@ -67,11 +74,13 @@ namespace My_Bug_Tracker.Controllers
                 var bug = Bug.SingleOrDefault(id);
 
                 bug.Issue = bugModel.Issue;
+                bug.Cause = bugModel.Cause;
                 bug.Status = bugModel.Status;
                 bug.Resolution = bugModel.Resolution;
                 bug.Comments = bugModel.Comments;
                 bug.Rating = bugModel.Rating;
                 bug.Tag = bugModel.Tag;
+                bug.LastModified = DateTime.Now;
 
                 bug.Save();
 
